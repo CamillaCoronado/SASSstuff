@@ -1,159 +1,204 @@
-$degree-rotation: 360deg;
-
-
-@import "compass/css3";
-
-@mixin keyframes($name) {
-  @-webkit-keyframes #{$name} {
-    @content; 
-  }
-  @-moz-keyframes #{$name} {
-    @content;
-  }
-  @-ms-keyframes #{$name} {
-    @content;
-  }
-  @keyframes #{$name} {
-    @content;
-  } 
+body, h1, h2, h4, button, input, select, textarea, #search-container .gsc-control-cse, #search-container .gsc-control-cse .gsc-table-result {
+  font-family: OpenSans;
 }
 
-@include keyframes(no-anim) {
-  
+h1 {
+    font-size:50px;
 }
 
-
-@mixin animation ($stuff ) {
-    -webkit-animation: $stuff;
-    -moz-animation: $stuff;
-    -ms-animation: $stuff;
-    animation: $stuff;
+h2 {
+  font-size:35px;
 }
 
-/* ----------------------------------------------------------------------- */
-
-@include keyframes(tag-bounce) {
-  0% {
-  	@include transform( scale(0.0) );
-  }
-  100% {
-    @include transform( scale(1.0) );
-  }
+h4 {
+    font-size: 20px;
+    font-weight: 400;
+    text-align: left;
+    padding-bottom: 35px;
+    padding-left: 200px;
+    margin-top: 0;
+    color: white;
 }
 
-@include keyframes(slide-right) {
-  0% {
-  	@include transform( translate(0.0px, 0.0px) );
-  }
-  50% {
-    @include transform( translate(100.0px, 0.0px) );
-  }
-  100% {
-    @include transform( translate(50.0px, 50.0px) );
-  }  
+#content p {
+    line-height: 35px;
+    font-weight:400;
 }
 
-@include keyframes(slide-right) {
-  0% {
-  	@include transform( translate(0.0px, 0.0px) );
-  }
-  50% {
-    @include transform( translate(200.0px, 0.0px) );
-  }
-  100% {
-    @include transform( translate(150.0px, 150.0px) );
-  }  
+#content p {
+    font-size:18px;
 }
 
-@include keyframes(rotate360) {
-  from {
-  	@include transform( rotate(0deg) );
-  }
-  to {
-  	@include transform( rotate($degree-rotation) );
-  }  
+#page-title {
+    z-index: 10;
+    margin: 0 0 -.01em 0;
+    padding: 0 0 0.25em 0;
+    position: relative;
+    width: 100%;
+}
 
+#page > #content {
+    padding: 0;
+}
+
+#content h1 {
+    padding-bottom: 20px;
+    padding-top: 1.1em;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 110%;
 }
 
 
+a:link {
+color: rgb(84, 169, 255);
+}
 
-.box1
+a:visited {
+color: rgb(84, 169, 255);
+}
+
+a.newButton {
+    background-color: rgb(84, 169, 255);
+    color: #f4f4f4;
+    border-radius: 5px;
+    padding: 10px 45px;
+    font-size: 20px;
+    text-decoration:none;
+}
+
+a.newButton:hover{
+  background-color: rgb(53, 155, 244);
+}
+
+a.newButtonTwo {
+    background-color: #002E5D;
+    color: #f4f4f4;
+    border-radius: 5px;
+    padding: 10px 45px;
+    font-size: 20px;
+    text-decoration:none;
+}
+
+
+.pho {
+    background-image: linear-gradient(rgba(84, 169, 255, 0.4), rgba(84, 169, 255, 0.4)), url(https://is.byu.edu/sites/indstudy.ce.byu.edu/files/writing-notes-idea-conference_0.jpg);
+    background-size:cover;
+    height:auto;
+}
+
+h2.pane-title {
+  margin:0px;
+  padding-left: 20px;
+}
+
+.panel-pane.pane-custom.pane-1
 {
-  position: absolute;
-  background-color: red;
-  width: 35px;
-  height: 35px;
-  left: 10px;
-  top: 10px;
-  padding: 25px;
-  @include border-radius(25px);
-  @include animation(slide-right 1s linear 0s infinite alternate);
+    z-index:100;
+    /*background-image: linear-gradient(rgba(84, 169, 255, 0.4), rgba(84, 169, 255, 0.4)), url(https://is.byu.edu/sites/indstudy.ce.byu.edu/files/writing-notes-idea-conference_0.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;*/
 }
 
-.box2
+
+.panel-pane.pane-node {
+  width:100%;
+}
+.panel-pane.pane-node .pane-content {
+    padding: 20px;
+}
+
+.panel-pane.pane-node.fourth, .third, .second {
+  padding: 0px;
+}
+
+.first p, .second p, .fourth p {
+    padding: 10px;
+}
+
+.panel-pane.pane-node.first {
+    z-index: 10;
+    background-color: #036;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 2em 1em 2em 0;
+}
+
+.first.pho > * {
+    z-index: 10;
+    background-color: rgba(40, 40, 40,.9);
+    color: white;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0.5em 0.5em 0em 1.3em;
+}
+
+.first h2.pane-title {
+    z-index: 100;
+    margin-top: 150px;
+} 
+
+.second h2, .fourth h2, .third h2
 {
-  position: absolute;
-  background-color: magenta;
-  width: 50px;
-  height: 50px;
-  left: 150px;
-  top: 150px;
-  padding: 25px;
-  @include border-radius(25px);
-  @include animation(tag-bounce 2s infinite linear);
+   padding: 5px 20px;
 }
 
-.box3
-{
-  position: absolute;
-  background-color: green;
+.panel-pane.pane-node.second, .fourth {
+    background-color: rgba(232,232,232,0.5);}
 
-  width: 50px;
-  height: 50px;
-  left: 250px;
-  top: 250px;
-  @include border-radius(25px);
-  &:hover { @include animation(rotate360 1s infinite linear ) };
 
+@media all and (min-width: 960px) {
+  #content h1 {
+    width: 100%;
+    box-sizing:  border-box;
+    padding-left: 60px;
+    z-index:100;
+    color: white;
+    text-align: left;
+
+  }
+  .panel-pane.pane-custom.pho {
+    width:100%;
+    height:40em;
+  }
+
+  .panel-pane.first {
+    /*width: 50%;*/
+    height: 35em;
+    margin-top: -180px;
 }
-
-
-.panel-pane.pane-node.text a:hover, 
-.panel-pane.pane-node.texty a:hover, 
-.panel-pane.pane-node.texto a:hover, 
-a.button:hover
-
-{
-	
-	@include transition(all 0.2s ease-in-out);
+  .panel-pane.pane-node.first p {
+    margin: 10px 30px 30px 30px;
 }
 
 
-.pane-adaptable-curriculum {
-	.panel-pane.pane-node.text a:hover, 
-	.panel-pane.pane-node.texty a:hover, 
-	.panel-pane.pane-node.texto a:hover, 
-	a.button:hover {
-		
-		@include transition(all 0.2s ease-in-out);
-	}
+    .panel-pane.pane-node.second, .third {
+        padding: 4em;
+    }
+
+     .panel-pane.pane-node.fourth {
+        padding: 4em;
+     }
 
 }
 
-.pane-affordable-for-you-and-your-stud {
-	.panel-pane.pane-node.text a:hover, 
-	.panel-pane.pane-node.texty a:hover, 
-	.panel-pane.pane-node.texto a:hover, 
-	a.button:hover {
-		
-		@include transition(all 0.8s ease-in-out);
-	}
-
+body {
+  background-image:none !important;
+  background-color:white;
 }
 
 
+@media screen and (min-width: 71.625em) {
+.wrapper {
+    max-width: 2000px;
+}
 
+#content {
+  width: 1143px; 
+  padding:0;
+}
 
-
-
-
+}
