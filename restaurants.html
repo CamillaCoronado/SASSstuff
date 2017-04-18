@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+	<title>Restaurant Data Thing...</title>
+	<style>
+		#restaurant-data {
+			display:flex;
+			flex-direction:column;
+		}
+		#restaurant-data li {
+			display:flex;
+			flex-direction:row;
+			padding:1em;
+		}
+		#restaurant-data li:nth-of-type(odd) {
+			background-color:rgba(235,235,235,0.6);
+		}
+
+
+		.restaurant-info {
+			width:25%;
+			padding:0 1em 1em 0;
+			margin:0 0.5em 0.5em 0;
+		}
+		.restaurant-info h3 {
+			margin:0;
+		}
+		.restaurant-info .address {
+			font-style:italic;
+		}
+		.description {
+			width:75%;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js" integrity="sha256-1O3BtOwnPyyRzOszK6P+gqaRoXHV6JXj8HkjZmPYhCI=" crossorigin="anonymous"></script>
+	<!-- This is the template -->
+	<script id="restaurantTemplate" type="text/x-handlebars-template">
+		<li>
+			<div class="restaurant-info" style="background-image: url({{image}});background-size:cover;background-repeat:no-repeat;">
+				<h3 class="title">{{title}}</h3>
+				<div class="address">
+					{{address1}}<br/>
+					{{city}}, {{state}} {{zip}}
+				</div>
+			</div>
+			<div class="description">{{description}}</div>
+		</li>
+	</script>
+	<script>
+		var restaurantTemplate = Handlebars.compile($("#restaurantTemplate").html());
+
+		$(document).ready(function() {
+			$.ajax({
+				url: "Restaurant_Data.json",
+				context: $("#restaurant-data"),
+				success: function( data, textStatus, jqXHR ) {
+					if(!data) { console.log("Error, data not loaded! 0",arguments); return -1 };
+					if(Object.keys(data).indexOf("docs") == -1) { console.log("Error, data not loaded! 1",arguments); return -1 };
+					if(Object.keys(data.docs).indexOf("docs") == -1) { console.log("Error, data not loaded! 2",arguments); return -1 };
+					var restaurantDataArray = data.docs.docs;
+					$(this).addClass("done");
+					for(var i=0;i<restaurantDataArray.length;i++) {
+						var restaurant = restaurantDataArray[i];
+						restaurant.i = i;
+						var html = restaurantTemplate(restaurant);
+						//console.log(restaurant);
+						$("#restaurant-data").append($(html));
+					}
+					console.log("final data:",restaurantDataArray);
+				}
+			})
+			;
+		});
+	</script>
+</head>
+<body>
+
+<ul id="restaurant-data"></ul>
+</body>
+</html>
