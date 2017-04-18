@@ -1,0 +1,49 @@
+/* line 3, ../sass/carousel.scss */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 9, ../sass/carousel.scss */
+#image1, #image2, #image3, #image4 {
+  margin-left: 100vw;
+}
+
+/* line 12, ../sass/carousel.scss */
+#image1-input:checked ~ #carousel #image1,
+#image2-input:checked ~ #carousel #image2,
+#image3-input:checked ~ #carousel #image3,
+#image4-input:checked ~ #carousel #image4 {
+  margin-left: 0;
+}
+
+/* line 20, ../sass/carousel.scss */
+#carousel {
+  overflow: hidden;
+  height: 600px;
+}
+/* line 24, ../sass/carousel.scss */
+#carousel ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+/* line 32, ../sass/carousel.scss */
+#carousel ul li {
+  transition: margin-left;
+}
+/* line 35, ../sass/carousel.scss */
+#carousel ul li img {
+  max-width: 100vw;
+}
+/* line 39, ../sass/carousel.scss */
+#carousel ul li:before {
+  display: block;
+  content: "\2022";
+  position: absolute;
+  bottom: 1em;
+  left: 3em;
+}

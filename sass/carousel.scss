@@ -1,0 +1,48 @@
+@import "compass/css3";
+
+body {
+	margin:0;
+	padding:0;
+}
+
+
+#image1,#image2,#image3,#image4 {
+	margin-left:100vw;
+}
+#image1-input:checked ~	#carousel #image1,
+#image2-input:checked ~	#carousel #image2,
+#image3-input:checked ~	#carousel #image3,
+#image4-input:checked ~	#carousel #image4 {
+	margin-left:0;
+}
+
+
+#carousel {
+	overflow:hidden;
+	height:600px;
+
+	ul {
+		display:flex;
+		flex-direction:row;
+		flex-wrap:nowrap;
+		position:relative;
+		margin:0;
+		padding:0;
+
+		li {
+			transition:margin-left;
+
+			img {
+				max-width:100vw;
+			}
+
+			&:before {
+				display:block;
+				content:"\2022";
+				position: absolute;
+				bottom:1em;
+				left:3em;
+			}
+		}
+	}
+}
